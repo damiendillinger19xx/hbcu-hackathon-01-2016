@@ -19,8 +19,8 @@
 	
 
 	<form method="GET" action="{% url 'gringotts:transfer' %}">
-		<label for="username-login">Username</label>
-                <input type="text" name="username" id="username-login">
+		<label for="id">Username</label>
+                <input type="text" name="id" id="id">
 		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
 	</form>
 	{% endblock %}
