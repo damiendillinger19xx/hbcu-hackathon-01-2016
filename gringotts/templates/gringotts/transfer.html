@@ -3,14 +3,16 @@
 {% block body_content %}
 
 <div class='container'>
-	<form method="POST" action="{% url 'gringotts:transfer' %}">
-		{% csrf_token %}
-		<label for="id">Payee Id:</label>
-	    <input type="text" name="id" id="id"><br>
-		<!-- <label for="money">Enter Amount:</label>
-		<input type="text" name="money" id="money"><br> -->
-		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit">
-	</form>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-4">
+			<form method="POST" action="{% url 'gringotts:transfer' %}">
+				{% csrf_token %}
+				<label for="id">To: </label>
+			    <input type="text" name="id" id="id" placeholder="User ID (Get User ID from Contacts)"><br>
+				<input style="background-color:#3399FF;color:white;border-style:none;height:2em;" type="submit">
+			</form>
+		</div>
+	</div>
 	<div>
 		{% if error %}
 			<p>{{error}}</p>

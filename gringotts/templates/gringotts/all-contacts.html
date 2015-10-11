@@ -1,0 +1,17 @@
+{% extends 'gringotts/base.html' %}
+
+{% block body_content %}
+
+		{% for i in users %}
+			<div>
+				<h3>
+					Costumer Name - {{i.nickname}}
+				</h3>
+				<p>
+					Account Type - {{i.type}}
+				</p> 
+			</div>
+		{% endfor %}
+
+{{users}}
+{% endblock %}

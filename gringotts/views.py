@@ -25,18 +25,20 @@ def index_view(request):
 	page = json.loads(page.decode())
 	return render(request, 'gringotts/index.html', {"key": developer_api_key, 'error' : errors, 'users' : page})
 
-
 def all_clients_view(request):
 	page = urlopen(all_clients_api + reimagine_api_key) 
 	page = page.read()
 	page = json.loads(page.decode())
-	return HttpResponse(page)
+	return render(request, 'gringotts/all-contacts.html', {'users' : page})
 
 def mid_transfer_view(request, errors=errors):
 	if (request.POST):
 		amount = int(request.POST['money'])
 		money_list.append(amount)
-		return render(request, 'gringotts/transfer.html', {'error' : errors})
+		page = urlopen(all_clients_api + reimagine_api_key) 
+		page = page.read()
+		page = json.loads(page.decode())
+		return render(request, 'gringotts/transfer.html', {'error' : errors, 'users' : page})
 
 def transfer_view(request, errors=errors, amount_list=money_list):
 	try:

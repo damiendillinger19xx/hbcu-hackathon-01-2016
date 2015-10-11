@@ -56,9 +56,9 @@ width:300px;
 <link rel="stylesheet" type="text/css" href="{% static 'gringotts/css/style.css' %}">
 </head>
 
-
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/plugins.js"></script>
 
 
@@ -75,7 +75,7 @@ width:300px;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Gringotts</a>
+                <a class="navbar-brand page-scroll" href="{% url 'gringotts:index' %}">Gringotts</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -92,7 +92,10 @@ width:300px;
                     </li>
                     <li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    <!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#my_contacts">
+						  Contacts
+						</button>
                     </li>
                     <li>
                         <a class="btn btn-block btn-social btn-facebook" href="fbconfig.php">
@@ -125,7 +128,33 @@ width:300px;
     </div>
 </div>
 
-
+<!-- Modal -->
+<div class="modal fade" id="my_contacts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">My Contacts</h4>
+      </div>
+      <div class="modal-body">
+		{% for i in users %}
+			<div>
+				<h3>
+					Costumer Name - {{i.nickname}}
+				</h3>
+				<p>
+					Account Type - {{i.type}}
+				</p> 
+				<p> Costumer ID - {{i.customer_id}}
+			</div>
+		{% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 
@@ -134,14 +163,13 @@ width:300px;
 
 <body>
 <!--/accounts/{id}/transfers -->
-<div class="container" style="position:relative;top:5.8em;">
+<div class="container" style="position:relative;top:6em;">
 	{% block body_content %}
 	
 	{% endblock %}
 </div>
 
 </body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 
@@ -153,6 +181,12 @@ width:300px;
     });
 
 });
+</script>
+
+<script type="text/javascript">
+	$('#my_contacts').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
 </script>
 
 </html>
