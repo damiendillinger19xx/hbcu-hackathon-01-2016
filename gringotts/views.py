@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 import json
-import urllib2
+from urllib.request import urlopen
 # Create your views here.
 
 reimagine_api_key = 'key=73773e58efaba48db97f6f32c3f89f51'
@@ -15,13 +15,16 @@ def index_view(request):
 
 
 def all_clients_view(request):
-	page = urllib2.urlopen(all_clients_api + reimagine_api_key)
+	page = urlopen(all_clients_api + reimagine_api_key)
 	page = page.read()
-	page = json.loads(page)
-	return render(request, 'gringotts/base.html', {'items' : page})
+	page = json.loads(page.decode())
+	print (page)
+	return HttpResponse(page)
+	# return render(request, 'gringotts/index.html', {'items' : page[0]})
 
 
-# def transfer(request):
+def transfer(request):
+	pass
 # 	if request.GET:
 # 		payee_id = request.GET['id']
 # 		transfer = transfer_api + reimagine_api_key
