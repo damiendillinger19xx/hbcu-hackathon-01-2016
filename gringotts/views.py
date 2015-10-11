@@ -2,21 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 # import urllib2
-# import requests
+import requests
 from urllib.request import urlopen
 
 
 
 # Create your views here.
-
+api_key = 'cf2de7e0ee02e6d80927a32fa0ff9727'
 reimagine_api_key = 'key=cf2de7e0ee02e6d80927a32fa0ff9727'
 all_clients_api = 'http://api.reimaginebanking.com/accounts?type=Checking&'
 transfer_api = 'http://api.reimaginebanking.com/accounts/%s/transfers?'
+dr_s_id = '560f0205f8d8770df0ef9aa2'
 user_name = '277roshan'
 
 
 def index_view(request):
-	return render(request, 'gringotts/base.html',{"key":"73773e58efaba48db97f6f32c3f89f51"})
+	return render(request, 'gringotts/base.html',{"key": api_key})
 
 
 def all_clients_view(request):
@@ -24,35 +25,32 @@ def all_clients_view(request):
 	page = page.read()
 	page = json.loads(page.decode())
 	return HttpResponse(page)
-	# return render(request, 'gringotts/index.html', {'items' : page[0]})
-
 
 def transfer(request):
 	if request.POST:
-		person_id = request.POST['id']
+		payee_id = request.POST['id']
 		amount = int(request.POST['money'])
-		payload = {
-		  "type": "Savings",
-		  "nickname": "test",
-		  "rewards": 10000,
-		  "balance": 10000,	
+		url = transfer_api.format(payee_id) + reimagine_api_key
+		transfer_details = {
+		  "medium": "balance",
+		  "payee_id": payee_id,
+		  "amount" : amount
 		}
-		#url = 'http://api.reimaginebanking.com/accounts/%s/transfers?key=%s'%(person_id, reimagine_api_key)
-		url = 'http://api.reimaginebanking.com/customers/{}/accounts?key={}'.format(person_id,reimagine_api_Key)
-		print url
+
+		# create a transfer
 		response = requests.post( 
 			url, 
-			data=json.dumps(payload),
+			data=json.dumps(transfer_details),
 			headers={'content-type':'application/json'},
 			)
 		if response.status_code == 201:
-			print True
+			print (True)
 			print('account created')
 		else:
-			print 'Not yet'
+			print (response.status_code)
+			print ('Not yet')
+		return render(request, 'gringotts/base.html',{"key": api_key})
 
-		return render(request, 'gringotts/base.html',{"key":"73773e58efaba48db97f6f32c3f89f51"}) 
-	pass
 
 		
 

@@ -30,16 +30,16 @@
 	{% block body_content %}
 	
 	<div class='container'>
-		<form method="GET" action="{% url 'gringotts:all_clients' %}">
+<!-- 		<form method="GET" action="{% url 'gringotts:all_clients' %}">
 			<label for="id">Send money to(Enter id):</label>
 		        <input type="text" name="id" id="id"><br>
 			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
-		</form>
+		</form> -->
 
 		<form method="POST" action="{% url 'gringotts:transfer' %}">
 			{% csrf_token %}
 			<label for="id">Send money to(Enter id):</label>
-		        <input type="text" name="id" id="id"><br>
+		    <input type="text" name="id" id="id"><br>
 			<label for="money">Enter Amount:</label>
 			<input type="text" name="money" id="money"><br>
 			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
