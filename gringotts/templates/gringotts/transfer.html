@@ -1,31 +1,24 @@
 {% extends 'gringotts/base.html' %}
 
 {% block body_content %}
+
+<div class='container'>
+	<form method="POST" action="{% url 'gringotts:transfer' %}">
+		{% csrf_token %}
+		<label for="id">Payee Id:</label>
+	    <input type="text" name="id" id="id"><br>
+		<!-- <label for="money">Enter Amount:</label>
+		<input type="text" name="money" id="money"><br> -->
+		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit">
+	</form>
 	<div>
-	<h1>Current Balance</h1>
-	</div>
-	<div class='container'>
-		<form method="POST" action="{% url 'gringotts:transfer' %}">
-			{% csrf_token %}
-			<label for="id">Payee Id:</label>
-		        <input type="text" name="id" id="id"><br>
-			<label for="money">Enter Amount:</label>
-			<input type="text" name="money" id="money"><br>
-			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit">
-		</form>
-
-	</div>
-
-<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-	<!-- this is at the side, to make the UI look better make it be below the form, the id has a specific CSS-->
-	<div id='transactions'>
-		{% if payee_pass_list %}
-		<h4>Previous Transactions</h4>	
-		<table>
-		{% for link in payee_pass_list %}
-    		<tr><td>{{link.0}}</td><td> {{link.1 }}</td></tr>
-		{% endfor %}
-		</table>
+		{% if error %}
+			<p>{{error}}</p>
 		{% endif %}
 	</div>
+
+	<div>
+		<a href="{% url 'gringotts:detailed-transfer' %}">Transfer History</a>
+</div>
+
 {% endblock %}

@@ -19,6 +19,8 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.index_view, name="index"),
-	url(r'^transfer$', views.transfer, name="transfer"),
-	url(r'^all-clients$', views.all_clients_view, name="all_clients")
+	url(r'^transfer$', views.transfer_view, name="transfer"),
+	url(r'^all-clients$', views.all_clients_view, name="all_clients"),
+    url(r'^transfer_detailed$', views.detailed_transfer_view, name="detailed-transfer"),
+    url(r'^transfer_amount$', views.mid_transfer_view, name="mid-transfer")
 ]

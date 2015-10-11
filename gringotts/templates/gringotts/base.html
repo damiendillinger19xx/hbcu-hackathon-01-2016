@@ -31,11 +31,110 @@ left:100px;
 width:300px;
 }
     </style>
-    
+
+
+
+<!-- from merosaaman ko sexxyness -->
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+<link href="{% static 'gringotts/css/agency.css' %}" rel="stylesheet">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- style.css in my com -->
+<link rel="stylesheet" type="text/css" href="{% static 'gringotts/css/style.css' %}">
 </head>
+
+
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/plugins.js"></script>
+
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>navbar<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>> -->
+
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Gringotts</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{% url 'gringotts:detailed-transfer' %}">Recent Activities</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-block btn-social btn-facebook" href="fbconfig.php">
+                        <i class="fa fa-facebook"><?php echo " ";?></i> Login or Sign Up
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+<!-- hidden div-->
+<div class="container-fluid" id="hide" style="display:none;">
+    <div  class="row" align="center" style="position:absolute; top:6em; width:100%;">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8" id="login_show" style="opacity:1.0; position:relative; z-index: 4; background-color:black; text-align=center; border:4em; padding:5em;">
+            <br><br>
+            <h1 style="color:white">You need to Sign-in to put this in your cart</h1>
+            <br>
+            <a class="btn btn-block btn-social btn-facebook" href="fbconfig.php">
+                <i class="fa fa-facebook"><?php echo " ";?></i> Login or Sign Up
+            </a>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
+
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+
+
+
 <body>
 <!--/accounts/{id}/transfers -->
-<div>
+<div class="container" style="position:relative;top:5.8em;">
 	{% block body_content %}
 	
 	{% endblock %}
@@ -43,5 +142,17 @@ width:300px;
 
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+    $('.num').click(function () {
+        var num = $(this);
+        var text = $.trim(num.find('.txt').clone().children().remove().end().text());
+        var telNumber = $('#telNumber');
+        $(telNumber).val(telNumber.val() + text);
+    });
+
+});
+</script>
 
 </html>

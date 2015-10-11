@@ -1,0 +1,27 @@
+{% extends 'gringotts/base.html' %}
+
+{% block body_content %}
+	<div>
+	<h1>Current Balance</h1>
+	</div>
+	<div class='container'>
+		<div>
+			<a href="{% url 'gringotts:transfer' %}">To Transfer</a>
+			<a href="{% url 'gringotts:index' %}">Home</a>
+		</div>
+
+	</div>
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<!-- this is at the side, to make the UI look better make it be below the form, the id has a specific CSS-->
+	<div id='transactions'>
+		{% if payee_pass_list %}
+		<h4>Previous Transactions</h4>	
+		<table>
+		{% for link in payee_pass_list %}
+    		<tr><td>{{link.0}}</td><td> {{link.1 }}</td></tr>
+		{% endfor %}
+		</table>
+		{% endif %}
+	</div>
+{% endblock %}
