@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>{{title}} </title>
+	
+
+	<link href="{% static 'transport/css/style.css'%}" rel="stylesheet" type="text/css">
+
+	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+<!-- self put external files-->
+
+    
+</head>
+<body class="fullbleed layout vertical">
+
+
+<!-- roshan dai ko polymer code starts here -->
+
+ 
+
+<!-- roshan daiko code ends here -->
+<div>
+	{% block body_content %}
+fasdfasdfasdfasf
+	{% endblock %}
+</div>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</html>

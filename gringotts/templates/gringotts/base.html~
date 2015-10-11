@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>{{title}} </title>
+	
+
+	<link href="{% static 'transport/css/style.css'%}" rel="stylesheet" type="text/css">
+
+	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+<!-- self put external files-->
+
+    
+</head>
+<body>
+<!--/accounts/{id}/transfers -->
+<div>
+	{% block body_content %}
+	
+
+	<form method="GET" action="{% url 'gringotts:transfer' %}">
+		<label for="username-login">Username</label>
+                <input type="text" name="username" id="username-login">
+		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
+	</form>
+	{% endblock %}
+</div>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</html>
