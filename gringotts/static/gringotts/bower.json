@@ -1,0 +1,22 @@
+{
+  "name": "gringotts",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sammanthp007/Gringotts",
+  "authors": [
+    "sammanthp007 <samman.thapa@bison.howard.edu>"
+  ],
+  "description": "online banking at your hands",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.1.5"
+  }
+}
