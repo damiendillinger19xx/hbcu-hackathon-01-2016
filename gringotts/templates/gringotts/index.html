@@ -1,0 +1,21 @@
+{% extends 'gringotts/base.html' %}
+
+{% block body_content %}
+
+<div class='container'>
+	<form method="POST" action="{% url 'gringotts:transfer' %}">
+		{% csrf_token %}
+		<label for="id">Payee Id:</label>
+	    <input type="text" name="id" id="id"><br>
+		<label for="money">Enter Amount:</label>
+		<input type="text" name="money" id="money"><br>
+		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit">
+	</form>
+	<div>
+		{% if error %}
+			<p>{{error}}</p>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

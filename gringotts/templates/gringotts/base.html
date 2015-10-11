@@ -2,14 +2,6 @@
 <html>
 <head>
 	<title>{{title}} </title>
-	
-
-	<link href="{% static 'transport/css/style.css'%}" rel="stylesheet" type="text/css">
-
-	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-
-<!-- self put external files-->
-
 
 <style type="text/css">
     .container {
@@ -45,38 +37,6 @@ width:300px;
 <!--/accounts/{id}/transfers -->
 <div>
 	{% block body_content %}
-	<div>
-	<h1>Current Balance</h1>
-	</div>
-	<div class='container'>
-<!--
-	<h2>Dr's Account</h2>
-		<form method="GET" action="{% url 'gringotts:all_clients' %}">
-			<label for="id">Send money to(Enter id):</label>
-		        <input type="text" name="id" id="id"><br>
-			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
-		</form> -->
-
-		<form method="POST" action="{% url 'gringotts:transfer' %}">
-			{% csrf_token %}
-			<label for="id">Payee Id:</label>
-		        <input type="text" name="id" id="id"><br>
-			<label for="money">Enter Amount:</label>
-			<input type="text" name="money" id="money"><br>
-			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
-		</form>
-
-	</div>
-	<div id='transactions'>
-		<h4>Previous Transactions</h4>	
-		<table>
-		{% for link in payee_pass_list %}
-    		<tr><td>{{link.0}}</td><td> {{link.1 }}</td></tr>
-		{% endfor %}
-		<table>
-	
-	</div>
-
 	
 	{% endblock %}
 </div>
