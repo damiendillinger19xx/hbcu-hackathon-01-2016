@@ -36,7 +36,7 @@
 			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
 		</form>
 
-		<form method="POST" action="{% url 'http://api.reimaginebanking.com/accounts/%s/transfers?key={{key}}'%(person_id)' %}">
+		<form method="POST" action="{% url 'gringotts:transfer' %}">
 			{% csrf_token %}
 			<label for="id">Send money to(Enter id):</label>
 		        <input type="text" name="id" id="id"><br>
