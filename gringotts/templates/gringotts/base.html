@@ -10,6 +10,18 @@
 
 <!-- self put external files-->
 
+
+<style type="text/css">
+    .container {
+        width: 500px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+
+    </style>
     
 </head>
 <body>
@@ -17,12 +29,23 @@
 <div>
 	{% block body_content %}
 	
+	<div class='container'>
+		<form method="GET" action="{% url 'gringotts:all_clients' %}">
+			<label for="id">Send money to(Enter id):</label>
+		        <input type="text" name="id" id="id"><br>
+			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
+		</form>
 
-	<form method="GET" action="{% url 'gringotts:all_clients' %}">
-		<label for="id">Username</label>
-                <input type="text" name="id" id="id">
-		<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
-	</form>
+		<form method="POST" action="{% url 'gringotts:transfer' %}">
+			{% csrf_token %}
+			<label for="id">Send money to(Enter id):</label>
+		        <input type="text" name="id" id="id"><br>
+			<label for="money">Enter Amount:</label>
+			<input type="text" name="money" id="money"><br>
+			<input style="background-color:#3399FF;color:white;border-style:none;" type="submit" id="submit-login">
+		</form>
+	
+	</div>
 	{% endblock %}
 </div>
 </body>

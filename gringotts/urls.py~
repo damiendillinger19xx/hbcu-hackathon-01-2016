@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
 	url(r'^$', views.index_view, name="index_view"),
 	url(r'^transfer$', views.transfer, name="transfer"),
+	url(r'^all-clients$', views.all_clients_view, name="all_clients")
 ]
